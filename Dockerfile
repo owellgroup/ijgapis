@@ -17,8 +17,7 @@ RUN chmod +x mvnw
 # Build the application
 RUN ./mvnw clean package
 
-# Expose the application port
-EXPOSE 8181
+
 
 # Run the application
 CMD ["java", "-jar", "target/ijgapis-0.0.1-SNAPSHOT.jar"]

@@ -10,6 +10,9 @@ COPY mvnw pom.xml ./
 
 # Copy source code
 COPY src ./src
+# Build the application without running tests
+RUN ./mvnw clean package -DskipTests
+
 
 # Grant execute permission to mvnw
 RUN chmod +x mvnw

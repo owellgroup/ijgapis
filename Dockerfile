@@ -6,10 +6,13 @@ WORKDIR /app
 
 # Copy Maven wrapper and pom.xml
 COPY .mvn/ .mvn/
-COPY mvnw pom.xml ./ 
+COPY mvnw pom.xml ./
 
 # Copy source code
 COPY src ./src
+
+# Grant execute permission to mvnw
+RUN chmod +x mvnw
 
 # Build the application
 RUN ./mvnw clean package

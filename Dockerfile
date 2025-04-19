@@ -1,24 +1,26 @@
-# Use OpenJDK 21 as base image
+# Use OpenJDK 21 with Maven wrapper support
 FROM eclipse-temurin:21-jdk-jammy
 
-# Set working directory
+# Set working directory inside the container
 WORKDIR /app
 
-# Copy Maven wrapper and pom.xml
+# Copy Maven wrapper files and pom.xml
 COPY .mvn/ .mvn/
 COPY mvnw pom.xml ./
 
-# Copy source code
-COPY src ./src
-
-
-
-# Grant execute permission to mvnw
+# Grant execute permission to mvnw script
 RUN chmod +x mvnw
 
-# Build the application
-RUN ./mvnw clean package
+# Download dependencies (optional optimization)
+RUN ./mvnw dependency:go-offline -B
 
+# Copy the full source code
+COPY src ./src
+
+# Build the application and skip tests
+RUN ./mvnw clean package -DskipTests
+
+# Expose the port your Spring Boot app runs on
 
 
 # Run the application

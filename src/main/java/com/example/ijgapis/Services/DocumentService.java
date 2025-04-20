@@ -128,7 +128,7 @@ public Resource loadFileAsResource(String fileName) throws MalformedURLException
             Path filePath = Paths.get(UPLOAD_DIR).resolve(fileName);
             Files.copy(file.getInputStream(), filePath);
 
-            String fileUrl = "http://localhost:8181/api/documents/view/" + fileName;
+            String fileUrl = "https://ijg-research-admin.vercel.app/api/documents/view/" + fileName;
             existingDocument.setFileUrl(fileUrl);
             existingDocument.setFileType(file.getContentType());
         }

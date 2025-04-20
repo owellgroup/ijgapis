@@ -51,7 +51,7 @@ public class DocumentService {
         Files.copy(file.getInputStream(), filePath);
 
         // Generate a public URL for the file
-        String fileUrl = "http://localhost:8181/api/documents/view/" + fileName;
+        String fileUrl = "https://ijg-research-admin.vercel.app/api/documents/view/" + fileName;
 
         // Create document entity
         Document document = new Document();

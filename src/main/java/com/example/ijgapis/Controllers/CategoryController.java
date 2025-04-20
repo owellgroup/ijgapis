@@ -11,7 +11,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/categories")
-@CrossOrigin(origins = "https://ijg-research-admin.vercel.app")
+@CrossOrigin(origins = {"https://ijg-research-admin.vercel.app", "http://localhost:5173"}, 
+    allowedHeaders = "*", 
+    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE}, 
+    exposedHeaders = {"Content-Disposition", "Content-Type"}, 
+    allowCredentials = "true")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
